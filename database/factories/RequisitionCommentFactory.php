@@ -22,7 +22,10 @@ class RequisitionCommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // 'user_id'=> 1,
+            // 'requisition_id'=>1,
+            // 'comment' => $this->faker()->sentence,
+            // 'request_type'=>0
         ];
     }
 }

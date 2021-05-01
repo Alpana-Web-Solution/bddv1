@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         	AdminSeeder::class,
         	RequisitionSeeder::class,
             PincodeSeeder::class,
+            DonationSeeder::class,
+            // RequisitionWithUser::class
             // UserSeeder::class
         ]);
         

@@ -10,7 +10,7 @@ use App\Models\Pincode;
 
 class PincodeCrudTest extends TestCase
 {
-    // use RefreshDatabase;
+    use RefreshDatabase;
    
 
     public function test_check_index_pincode()

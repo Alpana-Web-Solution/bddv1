@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Requisition;
 use App\Models\User;
 use App\Models\Donation;
+use App\Models\RequisitionComment;
 
 class RequisitionWithUser extends Seeder
 {
@@ -22,6 +23,7 @@ class RequisitionWithUser extends Seeder
     	// Add a requisition for every user
     	foreach ($users as $user) {
     		$requisition = Requisition::factory(['user_id'=>$user->id])->create();
+            // $RComments = RequisitionComment::factory(['user_id'=>$user->id,'requisition_id'=>$requisition->id])->count(1)->create();
     		$donation = Donation::factory(['user_id'=>$user->id,'requisition_id'=>$requisition->id])->create();
     	}
     }

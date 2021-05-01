@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
-class LinkTest extends TestCase
+class BrokenLinkTest extends TestCase
 {
     /**
      * A basic feature test example.
