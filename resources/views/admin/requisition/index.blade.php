@@ -10,8 +10,8 @@
       			{{trans('Current Blood Donation Requests')}}
             <a class="btn btn-primary btn-sm" style="float: right;" href="{{route('admin.requisition.create')}}">{{__('Create')}}</a>
       		</div>
-      		<div class="card-body " style="padding: 0px;" >
-      			<table class="table table-sm table-bordered table-responsive-sm">
+      		<div class="card-body " style="padding: 5px;" >
+      			<table class="table table-responsive-sm table-hover table-outline mb-0">
               <thead>
                 <tr>
                   <th>{{trans('ID')}}</th>

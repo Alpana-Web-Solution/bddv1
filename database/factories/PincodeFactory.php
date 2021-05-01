@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Pincode;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
 
 class PincodeFactory extends Factory
 {
@@ -22,7 +24,13 @@ class PincodeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'pincode'=>rand(100000,999999),
+            'state'=>Str::random(10),
+            'circle'=>Str::random(10),
+            'region'=>Str::random(10),
+            'division'=>Str::random(10),
+            'district'=>Str::random(10),
+            'taluk'=>Str::random(10)
         ];
     }
 }

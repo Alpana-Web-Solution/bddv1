@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Pincode;
+use App\Models\Requisition;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +18,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $this->call(AdminSeeder::class);
+        $this->call([
+        	AdminSeeder::class,
+        	RequisitionSeeder::class,
+            PincodeSeeder::class,
+            // UserSeeder::class
+        ]);
+        
 
     }
 }

@@ -20,7 +20,7 @@ class AdminCheck
         if (Auth::user() &&  Auth::user()->is_admin == 1) {
             return $next($request);
        }else {
-        return redirect('home')->with('error','You do not have admin access');
+        abort(403);
        }
        
     }

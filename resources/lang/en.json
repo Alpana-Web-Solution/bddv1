@@ -29,6 +29,8 @@
 	"pincode":"Pincode",
 	"pincode_index":"Pincode List",
 	"pincode_create":"Add Pincode",
-	"error_only_cloud_provider_available":"Sorry! You can only download using cloud service. Please update your settings."
+	"error_only_cloud_provider_available":"Sorry! You can only download using cloud service. Please update your settings.",
+	"Manage User":"Manage User"
+
 
 }

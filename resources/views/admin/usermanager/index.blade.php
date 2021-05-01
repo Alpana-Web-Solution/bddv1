@@ -7,15 +7,15 @@
       <div class="col-sm-12">
       	<div class="card shadow-sm">
       		<div class="card-header">
-            {{trans('global.manage_user')}}
+            {{__('Manage User')}}
       			<div class="card-header-actions">
-              <a class="btn btn-primary btn-sm" href="{{route('admin.usermanager.create')}}">{{trans('create')}}</a>
+              <a class="btn btn-primary btn-sm" href="{{route('admin.usermanager.create')}}">{{trans('Create')}}</a>
             </div>
       		</div>
       		<div class="card-body" style="padding: 5px;">
-      			<table class="table table-bordered table-responsive-sm">
-              <thead>
-                <tr>
+      			<table class="table table-responsive-sm table-hover table-outline mb-0">
+              <thead class="dark-thread">
+                <tr >
                   <th>{{trans('ID')}}</th>
                   <th>{{trans('Name')}}</th>
                   <th>{{trans('Username')}}</th>

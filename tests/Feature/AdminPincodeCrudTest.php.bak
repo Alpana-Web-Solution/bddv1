@@ -1,0 +1,54 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+use App\Models\User;
+
+class AdminPincodeCrudTest extends TestCase
+{
+    use RefreshDatabase;
+
+    
+
+    public function test_admin_check_index_pincode()
+    {   
+        $this->actingAs(User::factory(['is_admin'=>1])->create());
+
+        $response = $this->get('/admin/pincode');
+        $response->assertStatus(200);
+    }
+
+    public function test_admin_check_create_pincode()
+    {   
+        $this->actingAs(User::factory(['is_admin'=>1])->create());
+
+        $response = $this->get('/admin/pincode/create');
+        $response->assertStatus(200);
+
+    }
+
+    public function test_admin_create_pincode_check_view()
+    {
+        $pincode = [
+            'pincode'=>742149,
+            'state'=>'West Bengal',
+            'circle'=>'East',
+            'region'=>'East',
+            'division'=>'East',
+            'district'=>'Murshidabad',
+            'taluk'=>'Lalbagh',
+        ];
+
+        $this->actingAs(User::factory(['is_admin'=>1])->create());
+        $this->assertAuthenticated('web');
+        
+        $this->post('/admin/pincode',$pincode)->assertStatus(302);
+
+        $respond = $this->get(route('admin.pincode.show',1));
+
+        $respond->assertSee('742149');
+    }
+}

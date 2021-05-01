@@ -24,7 +24,8 @@ class GuestRequisitionEntryTest extends TestCase
 
     public function test_guest_create_requisition_form()
     {
-        $response = $this->withHeaders(['accept'=>'application/json'])->post('/requisition',[
+        $response = $this->withHeaders(['accept'=>'application/json'])
+        ->post('/requisition',[
             "pincode" => "458956",
             "hospital_name" => "Ciara Welch",
             "patient_name" => "Rhona Blackwell",
@@ -39,6 +40,7 @@ class GuestRequisitionEntryTest extends TestCase
             "when_wanted" => "2012-02-17",
             'when_wanted_time'=>"19:52:00"
         ]);
+
         // $response->dump();
         $response
         ->assertStatus(302)
