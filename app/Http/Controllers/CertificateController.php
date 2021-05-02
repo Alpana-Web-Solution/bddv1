@@ -56,7 +56,7 @@ class CertificateController extends Controller
 
     public function edit()
     {
-        $certificate = Certificate::firstOrCreate([],['certificate_template'=>'','cloudinary_transform'=>'']);
+        $certificate = Certificate::firstOrCreate([],['certificate_template'=>'','cloudinary_transform'=>0]);
         return view('admin.certificate.edit')->withCertificate($certificate);
     }
 

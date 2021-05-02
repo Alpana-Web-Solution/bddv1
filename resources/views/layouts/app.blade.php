@@ -29,11 +29,11 @@
 
 <body class="c-app">
     @auth
-    @if(Auth::user()->is_admin)
-        @include('layouts.menu.admin')
-    @elseif(auth()->user())
-        @include('layouts.menu.user')
-    @endif
+        @if(Auth::user()->is_admin)
+            @include('layouts.menu.admin')
+        @elseif(auth()->user())
+            @include('layouts.menu.user')
+        @endif
     @endauth
     <div class="c-wrapper">
         <header class="c-header c-header-fixed px-3">
@@ -46,6 +46,53 @@
             <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
+            <ul class="c-header-nav d-md-down-none">
+                <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="{{route('landing')}}">Home</a></li>
+                <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="{{(route('requisition.create'))}}">Request Blood Requisitin</a></li>
+            </ul>
+            <ul class="c-header-nav ml-auto mr-4">
+                @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+                            
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->is_admin ==1 )
+                                    <a class="dropdown-item" href="{{route('user.profile')}}">{{__("Profile")}}</a>
+                                    <a class="dropdown-item" href="{{route('admin.dashboard')}}">{{__("Dashboard")}}</a>
+                                    @else
+                                    <a class="dropdown-item" href="{{route('donation.index')}}">{{__("Donation")}}</a>
+                                    <a class="dropdown-item" href="{{route('user.profile')}}">{{__('Profile')}}</a>
+                                    <a class="dropdown-item" href="{{route('user.dashboard')}}">{{__("Dashboard")}}</a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+            </ul>
+
+
 
         </header>
 

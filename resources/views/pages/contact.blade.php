@@ -104,12 +104,12 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(Auth::user()->is_admin ==1 )
-                                    <a class="dropdown-item" href="{{route('profile')}}">{{__("Profile")}}</a>
+                                    <a class="dropdown-item" href="{{route('user.profile')}}">{{__("Profile")}}</a>
                                     <a class="dropdown-item" href="{{route('admin.dashboard')}}">{{__("Dashboard")}}</a>
                                     @else
                                     <a class="dropdown-item" href="{{route('donation.index')}}">{{__("Donation")}}</a>
-                                    <a class="dropdown-item" href="{{route('profile')}}">{{__('Profile')}}</a>
-                                    <a class="dropdown-item" href="{{route('dashboard')}}">{{__("Dashboard")}}</a>
+                                    <a class="dropdown-item" href="{{route('user.profile')}}">{{__('Profile')}}</a>
+                                    <a class="dropdown-item" href="{{route('user.dashboard')}}">{{__("Dashboard")}}</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

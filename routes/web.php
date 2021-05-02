@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('landing');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 
@@ -25,6 +26,7 @@ Route::group(['middleware'=>'auth'],function(){
     require __DIR__.'/user.php';
     
 });
+
 Route::name('admin.')->prefix('admin')->middleware(['admincheck'])->group(function () {
     
     // Admin Route URL

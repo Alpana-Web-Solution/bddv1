@@ -4,6 +4,11 @@
 
 ## I am building a more feature rich and stable version of this Web App as a Android app. Please stay updated.
 
+## Here is the tutorial for hosting on heroku, (vercel is coming soon).
+[Deploy on Heroku](https://debjit012.medium.com/how-did-i-host-my-blood-donation-diary-app-on-heroku-for-free-be03f8f4e1c9)
+
+
+
 
 ### What technical achievement are you most proud of?
 
