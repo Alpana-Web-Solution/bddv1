@@ -168,7 +168,7 @@ class RequisitionController extends Controller
      */
     public function destroy(Requisition $requisition)
     {
-
+        $requisition->load(['userDonations','comments']);
 
         // Check if user has uploaded images.
         if ($requisition->img) {
@@ -193,6 +193,19 @@ class RequisitionController extends Controller
             
             
         }
+
+        
+
+        // Remove the donation UID
+        foreach ($requisition->userDonations as $userDonation) {
+            $userDonation->update(['requisition_id'=> null]);
+        };
+
+        // delete the comments from database
+        foreach ($requisition->comments as $comment) {
+            $comment->delete();
+        }
+        
 
         // Now delete the entry.
         $requisition->delete();

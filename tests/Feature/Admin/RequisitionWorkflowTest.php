@@ -13,9 +13,9 @@ use App\Models\Donation;
 
 class RequisitionWorkflowTest extends TestCase
 {
-    // use RefreshDatabase;
+    use RefreshDatabase;
  
-    public function test_create_requisition()
+    public function test_full_requisition_crud_test()
     {
         $this->actingAs(User::factory(['name'=>'D Biswas','is_admin'=>1])->create());
         $this->assertAuthenticated('web');
@@ -68,6 +68,10 @@ class RequisitionWorkflowTest extends TestCase
         // Check admin/requisition/?/comment/
         $CCABDResponse = $this->get('/admin/requisition/'.$requisitionID.'/comment');
         $CCABDResponse->assertSee("Blood Donation msg?");
+
+        // Delete this requisition.
+        $deleteRequisition = $this->delete('/admin/requisition/'.$requisitionID);
+        $this->assertDatabaseMissing('requisitions',['id'=> $requisitionID]);
 
     }
 }
