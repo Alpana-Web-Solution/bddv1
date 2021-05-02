@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RequisitionComment extends Model
 {
     use HasFactory;
+    
     protected $fillable = ['request_type','comment','user_id','requisition_id','status'];
 
 	public function user()

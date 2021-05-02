@@ -144,5 +144,6 @@
     "Local":"স্থানীয় স্টোরেজ",
     "Cloudinary":"ক্লাউড স্টোরেজ",
     "Please define the Cloudinary setting first.":"সেটিংস পাওয়া যায় নি। দয়া করে প্রথমে ক্লাউড স্টোরেজ সেটিংস সংজ্ঞায়িত করুন।",
-    "Site successfully updated.":"সাইটটি সফলভাবে আপডেট হয়েছে।"
+    "Site successfully updated.":"সাইটটি সফলভাবে আপডেট হয়েছে।",
+    "Manage User":"নিয়ন্ত্রণ ব্যবহারকারী"
 }

@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pincode extends Model
 {
     use HasFactory;
+    
     protected $fillable = ['pincode','state','circle','region','division','district','taluk'];
 }

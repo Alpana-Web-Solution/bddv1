@@ -22,7 +22,13 @@ class DonationFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "user_id"=>"1",
+            "requisition_id"=>"1",
+            "type"=>1,
+            "unit"=>1,
+            "approver_id"=>1,
+            "comment"=>"Thank You",
+            "date"=>now()
         ];
     }
 }
