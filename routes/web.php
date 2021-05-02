@@ -21,11 +21,13 @@ Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->nam
 
 Route::group(['middleware'=>'auth'],function(){
 
+// User Route URL
     require __DIR__.'/user.php';
     
 });
 Route::name('admin.')->prefix('admin')->middleware(['admincheck'])->group(function () {
     
+    // Admin Route URL
     require __DIR__.'/admin.php';
     
 });
