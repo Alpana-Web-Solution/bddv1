@@ -6,7 +6,7 @@
 @section('styles')
 <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 @endsection
-  <div class="container">
+  <div class="container-fluid">
   	@include('layouts.message')
     <div class="row justify-content-center">
       <div class="col-sm-12">
@@ -33,6 +33,8 @@
             <strong>{{$data->alternate_contact}}</strong>
       			<hr>
             @endauth
+            {{__("Hospital Name ")}}: <strong>{{$data->hospital_name}}</strong><br>
+            {{__("Pincode ")}} : <strong>{{$data->pincode}}</strong><br>
             {{__("Blood Needed On")}}: <strong>{{$data->when_wanted}}</strong><br>
             {{__('Blood Group')}} : <strong>{{BloodGroupFunction($data->blood_group)}}</strong><br>
             {{__("Unit")}} : <strong>{{$data->unit}}</strong>

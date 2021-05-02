@@ -64,8 +64,8 @@ function RequisitionSeoImgFunction($value = 1)
 	 );
 	if (empty($value)) {
 		return trans('N/A');
-	}else{
-		return $arrayName[$value];
 	}
+		return $arrayName[$value];
+	
 	
 }

@@ -53,12 +53,14 @@ class RequisitionDonationController extends Controller
     {
 
         $request->validate(['user'=>'required','type'=>'required','unit'=>'required']);
+
+        $requestDate = \Carbon\Carbon::now();
         
         if ($request->date) {
            $requestDate = \Carbon\Carbon::parse($request->date . ' ' . $request->time ?? '')->toDateTimeString();
-        }else{
-            $requestDate = \Carbon\Carbon::now();
         }
+        
+        
 
         // Store donation to the database
         $store = Donation::create([

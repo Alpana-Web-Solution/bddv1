@@ -44,7 +44,7 @@ class CertificateController extends Controller
                 return redirect()->away($certificateData);
                 // dd(url($certificateData),$data);
             }else{
-                return back()->with('error','Please upload template to cloudinary first.');
+                return back()->with('error',__('Please upload template to cloudinary first.'));
             }
             
         }else{
@@ -98,7 +98,7 @@ class CertificateController extends Controller
             $data->save();
 
             // Return success or null
-            return back()->with('success','Template Updated');
+            return back()->with('success',__('Template Updated'));
 
         }else{
             $uploadImageToStorage = new ImageUploadService(auth()->user());
@@ -107,7 +107,7 @@ class CertificateController extends Controller
                 'certificate_template'=>URL::asset($uploadImageToStorage->certificateUpload())
             ]);
             
-            return back()->with('success','Template Updated');
+            return back()->with('success',__('Template Updated'));
         }
         
         

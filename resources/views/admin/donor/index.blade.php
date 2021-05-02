@@ -28,7 +28,7 @@
                       class="table-danger"
                       @endif
                     @else
-                    class="table-danger"
+                    class="table-info"
                     @endif
                 >
                   <td>{{$d->id}}</td>

@@ -28,13 +28,14 @@ use Illuminate\Support\Facades\Storage;
 		if (empty($userDetails)) {
 			if (auth()->user()) {
 				$this->userDetails = auth()->user();
-			}else{
-				$this->userDetails = null;
 			}
 			
-		}else{
-			$this->userDetails = $userDetails;
+			$this->userDetails = null;
+			
+			
 		}
+			$this->userDetails = $userDetails;
+		
 		
 	}
 
@@ -62,12 +63,12 @@ use Illuminate\Support\Facades\Storage;
                     // Cloudinary
 					$uploadedFileUrl = request()->file->storeOnCloudinary('abdd/avatar/'.$this->userDetails->id);  
 					return $uploadedFileUrl->getSecurePath();  
-				}else{
+				}
                     // Local Storage
 					$uploadedFileUrl = request()->file->store('public'.$usersDir);
 					
 					return url(asset('storage/avatar/'.$this->userDetails->id.str_replace('public'.$usersDir,'',$uploadedFileUrl)));
-				}
+				
 			
 		}else{
 			return null;
@@ -83,17 +84,18 @@ use Illuminate\Support\Facades\Storage;
                 // Cloudnary
 					$uploadedFileUrl = request()->file->storeOnCloudinary('abdd/'.\carbon\carbon::now()->toDateString());  
 					return $uploadedFileUrl->getSecurePath();
-				}else{
+				}
                 // Local Storage
 					$date = \carbon\carbon::now()->toDateString();
 					$uploadedFileUrl = request()->file->store($subDirectory.$date, 'public');
                 	// $request->file('file')->store('public/images');
 					return 'storage/'.$uploadedFileUrl; 
-				}
+				
 			
-		}else{
-			return null;
 		}
+		
+		return null;
+		
 		
 
 	}
@@ -111,16 +113,17 @@ use Illuminate\Support\Facades\Storage;
 
                 $uploadedFileUrl = request()->certificate_template->storeOnCloudinary('abdd/certificate/');  
                 return $uploadedFileUrl->getSecurePath();
-            }else{                
+            }              
                 // If not uploading in public folder its just throwing 404 error.
                 $uploadedFileUrl = request()->certificate_template->store('public/certificate');
                 // change to the storage folder 
                 return url(asset('storage/certificate/'.str_replace('public/certificate/','',$uploadedFileUrl)));
-            }
-        }else{
-            // If no image is passed return null.
-            return null;
+            
         }
+            
+        // If no image is passed return null.
+        return null;
+        
 	}
 
 
@@ -143,12 +146,12 @@ use Illuminate\Support\Facades\Storage;
                 
                 $test = cloudinary()->destroy($publicID);
 
-            }else{
-
-                // For local storage delete from here.
-                $deleteStorageFile = basename($url);
-                $sdfsdfsadfsd = Storage::delete('public'.$subFolder.'/'.$deleteStorageFile);
             }
+
+        // For local storage delete from here.
+        $deleteStorageFile = basename($url);
+        $sdfsdfsadfsd = Storage::delete('public'.$subFolder.'/'.$deleteStorageFile);
+            
 	}
 
 

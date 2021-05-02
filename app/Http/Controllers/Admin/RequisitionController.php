@@ -185,12 +185,12 @@ class RequisitionController extends Controller
                 // dd($publicID);
                 $test = cloudinary()->destroy($publicID);
 
-            }else{
+            }
                 // For local storage delete from here.
                 $deleteStorageFile = $getImageURL[1].'/'.$getImageURL[2];
                 $sdfsdfsadfsd = Storage::delete('public/'.$deleteStorageFile);
                 // dd(Storage::files('public'),$sdfsdfsadfsd,$deleteStorageFile,'Delete Local Files.');
-            }
+            
             
         }
 

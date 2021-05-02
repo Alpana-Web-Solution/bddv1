@@ -67,6 +67,7 @@ class UserManagerController extends Controller
         if (!empty(request()->password)) {
             $data +=['password'=>Hash::make(request()->password)];
         }else{
+            // Else needed otherwiese I have to unset
             $data +=['password' => bcrypt(mt_rand())];
         }
         
