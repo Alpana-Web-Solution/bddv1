@@ -59,15 +59,14 @@ class RequisitionWorkflowTest extends TestCase
         'comment' => 'Blood Donation msg?','type'=>1];
         
         $insertNonConfirmedBloodDonationResponse = $this->post('/requisition/'.$requisitionID.'/comment',$insertNonConfirmedBloodDonationRequestData);
-        
         $insertNonConfirmedBloodDonationResponse->assertStatus(302);
-            
+
+        // Check if ? found in the view
         $insertNonConfirmedBloodDonationRequest = $this->get('/admin/requisition/'.$requisitionID.'/donation');
         $insertNonConfirmedBloodDonationRequest->assertSee(" ?");
 
         // Check admin/requisition/?/comment/
         $CCABDResponse = $this->get('/admin/requisition/'.$requisitionID.'/comment');
-        
         $CCABDResponse->assertSee("Blood Donation msg?");
 
     }
