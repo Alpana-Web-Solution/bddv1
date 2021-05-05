@@ -32,7 +32,7 @@
                   <td>{{$d->user->name}}</td>
                   <td>{{$d->unit}}</td>
                   <td>
-                    <form action="{{ route('admin.requisition.comment.destroy',[$requisition->id,$d->id]) }}" method="POST">
+                    <form action="{{ route('admin.requisition.donation.destroy',[$requisition->id,$d->id]) }}" method="POST">
                     @csrf
                     @method('DELETE') 
 

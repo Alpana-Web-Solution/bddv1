@@ -113,7 +113,7 @@ class RequisitionController extends Controller
     public function show(Requisition $requisition)
     {
         return view('admin.requisition.show')
-        ->withData($requisition->load(['comments','comments.user','userDonations']));
+        ->withData($requisition->load(['comments','comments.user','userDonations','userDonations.user']));
     }
 
     /**

@@ -103,7 +103,7 @@ class RequisitionDonationController extends Controller
         $userUpdate->update(['last_donated'=>$requestDate]);
         
         
-        return redirect()->route('admin.requisition.show',$requisition->id)->with('info','Donation Saved.');
+        return redirect()->route('admin.requisition.show',$requisition->id)->with('info',__('Donation Saved.'));
 
     }
 
@@ -132,8 +132,15 @@ class RequisitionDonationController extends Controller
         $userUpdate = User::where('id',$request->user)->first();
         $userUpdate->update(['last_donated'=>$data['date']]);
 
-        return redirect()->route('admin.requisition.donation.index',$requisition->id)->with('info','Donation Updated.');
+        return redirect()->route('admin.requisition.donation.index',$requisition->id)->with('info',__('Donation Updated.'));
 
+    }
+
+    public function destroy(Requisition $requisition, $donation)
+    {
+        $delete = Donation::where(['requisition_id'=>$requisition->id,'id'=>$donation])->first();
+        $delete->delete();
+        return back()->with('success',__('The donation request has beed deleted.'));
     }
 
 }

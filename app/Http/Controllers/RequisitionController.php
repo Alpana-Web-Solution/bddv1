@@ -71,6 +71,7 @@ class RequisitionController extends Controller
         
         // Send Image upload to service
         $imageUpload = new ImageUploadService();
+
         $data += ['img'=>$imageUpload->requisitionUpload()];
         
         $createRequisition = Requisition::create($data);
@@ -105,7 +106,10 @@ class RequisitionController extends Controller
             return abrot(403);
         }
 
-        request()->validate(['unit'=>['required','numeric','max:5'],'type'=>['required','numeric']]);
+        request()->validate([
+            'unit'=>['required','numeric','max:5'],
+            'type'=>['required','numeric']
+        ]);
 
         $data = [
             'user_id'=>Auth::id(),
