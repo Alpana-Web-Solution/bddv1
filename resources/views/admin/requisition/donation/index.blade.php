@@ -36,7 +36,7 @@
                     @csrf
                     @method('DELETE') 
 
-                    <a class="btn btn-primary btn-sm" href="{{route('admin.requisition.comment.show',[$requisition->id,$d->id])}}">{{trans('Show')}}</a>
+                    <a class="btn btn-primary btn-sm" href="{{route('admin.requisition.donation.show',[$requisition->id,$d->id])}}">{{trans('Show')}}</a>
                     <button type="submit"  class="btn btn-sm btn-danger" onclick="return confirm('{{__("Are you sure you want to Delete")}}')">{{__("Delete")}}</button>
                         </form>
                   </td>

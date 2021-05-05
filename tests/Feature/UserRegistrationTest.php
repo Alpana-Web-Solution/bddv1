@@ -11,7 +11,7 @@ use App\Models\User;
 class UserRegistrationTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * User registration test.
      *
      * @return void
      */

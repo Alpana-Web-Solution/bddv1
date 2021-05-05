@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\RequisitionComment;
+use App\Models\Requisition;
 use Illuminate\Http\Request;
 
 class RequisitionCommentController extends Controller
@@ -36,9 +37,10 @@ class RequisitionCommentController extends Controller
      * @param  \App\Models\RequisitionComment  $requisitionComment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RequisitionComment $requisitionComment)
+    public function destroy($requisition,$requisitionComment)
     {
-        $requisitionComment->delete();
-        return redirect()->back()->with('info',__('Comment Deleted.'));
+        RequisitionComment::where(['requisition_id'=>$requisition,'id'=>$requisitionComment,'user_id'=>Auth::id()])->firstOrFail()->delete();
+        // dd($requisition,$requisitionComment);
+        return back()->with('info',__('Comment Deleted.'));
     }
 }

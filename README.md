@@ -4,6 +4,48 @@
 
 ## I am building a more feature rich and stable version of this Web App as a Android app. Please stay updated.
 
+
+<p align="center">
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018371-0e8bed80-ad12-11eb-9ee0-be8d82924f05.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018282-fc11b400-ad11-11eb-99d2-0420024b26c8.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018292-fe740e00-ad11-11eb-8bcf-8da88be5a19d.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018298-ffa53b00-ad11-11eb-9738-3200ee42248e.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018305-003dd180-ad12-11eb-85a3-d4103ee762d5.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018311-016efe80-ad12-11eb-8982-f43fbc49fa31.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018331-059b1c00-ad12-11eb-88c2-421342294ee7.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018346-092ea300-ad12-11eb-9040-485644eb93df.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117016475-6164a580-ad10-11eb-95bb-1b8de695f0c8.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018242-f2884c00-ad11-11eb-8141-23137fcf2d23.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018250-f4eaa600-ad11-11eb-8539-4cfd366204b6.png" width="400">
+	</a>
+	<a href="https://alpana.org/bdd" target="_blank">
+		<img src="https://user-images.githubusercontent.com/565922/117018257-f61bd300-ad11-11eb-823b-d70c3647a0bd.png" width="400">
+	</a>
+</p>
+
+
+
 ## Here is the tutorial for hosting on heroku, (vercel is coming soon).
 [Deploy on Heroku](https://debjit012.medium.com/how-did-i-host-my-blood-donation-diary-app-on-heroku-for-free-be03f8f4e1c9)
 
