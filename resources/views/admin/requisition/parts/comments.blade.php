@@ -44,13 +44,13 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">{{__("Create Message")}}</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">{{__("Donate Blood")}}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form action="{{route('requisition.comment.store',$data->id)}}" method="POST">
+                      <form action="{{route('requisition.donation',$data->id)}}" method="POST">
                         @csrf
                        <div class="form-group">
                           <div class="form-group">    
@@ -60,6 +60,10 @@
                                 <option value="2">{{__('Others')}}</option>
                               </select>
                           </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">{{__('Unit')}}:</label>
+                          <input type="number" name="unit" class="form-control">
                         </div>
                         <div class="form-group">
                           <label for="message-text" class="col-form-label">{{__('Message')}}:</label>

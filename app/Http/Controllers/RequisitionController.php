@@ -96,5 +96,29 @@ class RequisitionController extends Controller
         );
     }
 
+    public function donation(Requisition $requisition)
+    {
+        // Store users requisition request
+        // dd(request()->all());
+
+        if (!auth()) {
+            return abrot(403);
+        }
+
+        request()->validate(['unit'=>['required','numeric','max:5'],'type'=>['required','numeric']]);
+
+        $data = [
+            'user_id'=>Auth::id(),
+            'requisition_id'=>$requisition->id,
+            'type'=>request()->type,
+            'comment'=>request()->comment,
+            'date'=>now()
+        ];
+
+        \App\Models\Donation::create($data);
+
+        return back()->with('success',__('Your donation request is successfully registered and pending approval.'));
+    }
+
     
 }

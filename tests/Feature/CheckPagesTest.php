@@ -8,6 +8,8 @@ use Tests\TestCase;
 
 class CheckPagesTest extends TestCase
 {
+    use RefreshDatabase;
+    
     public function test_landing_page_show_test()
     {
         $response = $this->get('/');

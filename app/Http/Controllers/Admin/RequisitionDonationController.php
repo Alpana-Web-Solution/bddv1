@@ -19,14 +19,12 @@ class RequisitionDonationController extends Controller
      */
     public function index(Requisition $requisition)
     {
+        $data = Donation::where('requisition_id',$requisition->id)->with('user')->get();
+
         return view('admin.requisition.donation.index')
-        ->withData(
-            RequisitionComment::where(['requisition_id'=>$requisition->id,'request_type'=>1,'status'=> null])
-            ->with('user')
-            ->paginate(20)
-            )
+        ->withData($data->where('status',0))
         ->withRequisition($requisition)
-        ->withDonations($requisition->userDonations);
+        ->withDonations($data->where('status',1));
     }
 
     // This will create a manual entry for donor
@@ -42,6 +40,13 @@ class RequisitionDonationController extends Controller
         );
     }
 
+    public function show(Requisition $requisition, $donation)
+    {
+        return view('admin.requisition.donation.show')
+        ->withData(Donation::where(['requisition_id'=>$requisition->id,'id'=>$donation])->first())
+        ->withRequisition($requisition);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -52,13 +57,19 @@ class RequisitionDonationController extends Controller
     public function store(Requisition $requisition,Request $request)
     {
 
-        $request->validate(['user'=>'required','type'=>'required','unit'=>'required']);
+        $request->validate([
+            'user'=>'required',
+            'type'=>'required',
+            'unit'=>'required',
+            'status'=>['required','numeric']
+        ]);
 
         $requestDate = \Carbon\Carbon::now();
         
         if ($request->date) {
            $requestDate = \Carbon\Carbon::parse($request->date . ' ' . $request->time ?? '')->toDateTimeString();
         }
+        // Update current 
         
         
 
@@ -70,21 +81,22 @@ class RequisitionDonationController extends Controller
             'unit'=>$request->unit,
             'date'=> $requestDate,
             'approver_id'=>Auth::id(),
+            'status'=>$request->status,
             'comment'=>$request->message,
         ]);
 
         // For new requisition, save the requisition comment status as 1 so no over written possible.
-        $updateCommand = RequisitionComment::where([
-            'requisition_id'=>$requisition->id,
-            'id'=>$request->comment_id
-            ])->first();
+        // $updateCommand = RequisitionComment::where([
+        //     'requisition_id'=>$requisition->id,
+        //     'id'=>$request->comment_id
+        //     ])->first();
         // If converting from comments
-        if (!empty($updateCommand)) {
-            if ($updateCommand->status != 1) {
-                $updateCommand->update(['status'=>1]);
-            }
+        // if (!empty($updateCommand)) {
+        //     if ($updateCommand->status != 1) {
+        //         $updateCommand->update(['status'=>1]);
+        //     }
            
-        }
+        // }
 
         // Update last donation date for given user.
         $userUpdate = User::where('id',$request->user)->first();
@@ -92,6 +104,35 @@ class RequisitionDonationController extends Controller
         
         
         return redirect()->route('admin.requisition.show',$requisition->id)->with('info','Donation Saved.');
+
+    }
+
+    public function update(Requisition $requisition, $donation, Request $request)
+    {
+        $data = $request->validate([
+            'user'=>'required',
+            'type'=>'required',
+            'unit'=>'required',
+            'status'=>['required','numeric']
+        ]);
+
+        
+        
+        if ($request->date) {
+           $data['date'] = \Carbon\Carbon::parse($request->date . ' ' . $request->time ?? '')->toDateTimeString();
+        }else{
+            $data['date'] = \Carbon\Carbon::now();
+        }
+        $data['approver_id'] = Auth::id();
+
+        $update = Donation::where(['requisition_id'=>$requisition->id,'id'=>$donation])->first();
+        $update->update($data);
+
+        // Update users last donation
+        $userUpdate = User::where('id',$request->user)->first();
+        $userUpdate->update(['last_donated'=>$data['date']]);
+
+        return redirect()->route('admin.requisition.donation.index',$requisition->id)->with('info','Donation Updated.');
 
     }
 

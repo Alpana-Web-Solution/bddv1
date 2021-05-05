@@ -8,11 +8,7 @@ use Tests\TestCase;
 
 class GuestRequisitionEntryTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
     use RefreshDatabase;
 
     public function test_guest_show_requisition_form()

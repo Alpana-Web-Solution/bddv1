@@ -9,6 +9,8 @@ use App\Models\User;
 
 class UserManagerTest extends TestCase
 {
+    use RefreshDatabase;
+    
     public function test_usermanager_non_register_user_index()
     {
 

@@ -10,7 +10,7 @@ use App\Models\User;
 class BrokenLinkTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * Check all URL for broken links
      *
      * @return void
      */
